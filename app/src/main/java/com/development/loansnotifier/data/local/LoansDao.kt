@@ -16,7 +16,7 @@ interface LoansDao {
     @Query("SELECT * FROM Loans")
     fun getLoans(): LiveData<List<Loans>>
 
-    @Query("UPDATE Loans SET  payment = :payed WHERE loan_id = :loanId")
+    @Query("UPDATE Loans SET  paid = :payed WHERE loan_id = :loanId")
     suspend fun updateLoanPayment(loanId: String, payed: Boolean)
 
 }

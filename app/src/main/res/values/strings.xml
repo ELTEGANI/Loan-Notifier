@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Loans Notifier</string>
     <string name="loan_cant_be_empty">Loan Cannot Be Empty</string>
-    <string name="payment_marked_done">Loan Marked Payment Done</string>
-    <string name="marked_active">Loan Marked Payment Active</string>
+    <string name="payment_marked_done">Loan Marked Paid</string>
+    <string name="marked_active">Loan Marked Payment UnPaid</string>
+    <string name="filter_menu">Filter Menu</string>
+    <string name="all">All</string>
+    <string name="payed">Paid Loans</string>
+    <string name="unpaid">UnPaid Loans</string>
+    <string name="all_loan">All Loan</string>
+    <string name="no_loans">You Have No Loans</string>
+    <string name="label_paid">Paid Loans</string>
+    <string name="no_payed_loan">You Have No Paid Loan</string>
+    <string name="label_unpaid">UnPaid Loans</string>
+    <string name="no_unpaid_loan">You Have No Unpaid Loan</string>
 </resources>
