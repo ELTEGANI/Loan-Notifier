@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Loans Notifier</string>
+    <string name="loan_cant_be_empty">Loan Cannot Be Empty</string>
+</resources>
