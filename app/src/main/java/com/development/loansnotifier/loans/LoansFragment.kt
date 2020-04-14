@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DefaultItemAnimator
 import com.development.loansnotifier.R
 import com.development.loansnotifier.databinding.LoansFragmentBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,12 +18,12 @@ class LoansFragment : Fragment() {
 
     private val viewModel by viewModels<LoansViewModel>()
     private lateinit var viewDataBinding: LoansFragmentBinding
-
+    private lateinit var loansAdapter: LoansAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         viewDataBinding = LoansFragmentBinding.inflate(inflater, container,
             false).apply {
-            viewModel = viewModel
+            viewmodel = viewModel
         }
         return viewDataBinding.root
     }
@@ -30,6 +32,7 @@ class LoansFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         setupFab()
+        setListAdapter()
     }
 
 
@@ -46,4 +49,14 @@ class LoansFragment : Fragment() {
        findNavController().navigate(actions)
     }
 
+    private fun setListAdapter(){
+        loansAdapter = LoansAdapter()
+        viewDataBinding.loanList.itemAnimator = DefaultItemAnimator()
+        viewDataBinding.loanList.adapter = loansAdapter
+        viewModel.loanItems.observe(viewLifecycleOwner, Observer {
+            it.let {
+                loansAdapter.submitList(it)
+            }
+        })
+    }
 }

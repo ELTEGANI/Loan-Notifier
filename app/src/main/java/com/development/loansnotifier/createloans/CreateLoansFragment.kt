@@ -40,7 +40,7 @@ class CreateLoansFragment : Fragment() {
             val day = c.get(Calendar.DAY_OF_MONTH)
             val datePickerDialog = context?.let { it1 -> DatePickerDialog(
                 it1,
-                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                     val calendar = Calendar.getInstance()
                     calendar.set(year, monthOfYear, dayOfMonth)
                     val format = SimpleDateFormat("yyyy-MM-dd")
@@ -58,7 +58,7 @@ class CreateLoansFragment : Fragment() {
             val day = c.get(Calendar.DAY_OF_MONTH)
             val datePickerDialog = context?.let { it1 -> DatePickerDialog(
                 it1,
-                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                     val calendar = Calendar.getInstance()
                     calendar.set(year, monthOfYear, dayOfMonth)
                     val format = SimpleDateFormat("yyyy-MM-dd")
