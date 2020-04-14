@@ -29,10 +29,6 @@ class CreateLoansFragment : Fragment() {
         createLoansFragmentBinding = CreateNewLoansFragmentBinding.bind(root).apply {
             this.viewmodel = viewModel
         }
-
-        createLoansFragmentBinding.lifecycleOwner = this.viewLifecycleOwner
-
-
         createLoansFragmentBinding.loanDateButton.setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
@@ -74,6 +70,7 @@ class CreateLoansFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        createLoansFragmentBinding.lifecycleOwner = this.viewLifecycleOwner
         setupSnackbar()
         setupNavigation()
     }

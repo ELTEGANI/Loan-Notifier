@@ -4,10 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <import type="android.widget.CompoundButton" />
         <variable
             name="loanItems"
             type="com.development.loansnotifier.data.Loans" />
+
+        <variable
+            name="viewmodel"
+            type="com.development.loansnotifier.loans.LoansViewModel" />
 
     </data>
 
@@ -51,6 +55,8 @@
                  android:layout_height="wrap_content"
                  android:layout_marginEnd="8dp"
                  android:layout_marginBottom="8dp"
+                 android:checked="@{loanItems.payment}"
+                 android:onClick="@{(view) -> viewmodel.paymentLoan(loanItems,((CompoundButton)view).isChecked())}"
                  app:layout_constraintBottom_toBottomOf="parent"
                  app:layout_constraintEnd_toEndOf="parent"/>
 

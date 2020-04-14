@@ -10,8 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.development.loansnotifier.R
+import com.development.loansnotifier.databinding.CreateNewLoansFragmentBinding
 import com.development.loansnotifier.databinding.LoansFragmentBinding
+import com.development.loansnotifier.util.setupSnackbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 class LoansFragment : Fragment() {
 
@@ -21,16 +24,22 @@ class LoansFragment : Fragment() {
     private lateinit var loansAdapter: LoansAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        viewDataBinding = LoansFragmentBinding.inflate(inflater, container,
-            false).apply {
-            viewmodel = viewModel
+        val root = inflater.inflate(R.layout.loans_fragment, container, false)
+        viewDataBinding = LoansFragmentBinding.bind(root).apply {
+            this.viewmodel = viewModel
         }
+        viewModel.loanItems.observe(viewLifecycleOwner, Observer {
+            it.let {
+                loansAdapter.submitList(it)
+            }
+        })
         return viewDataBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+        setupSnackbar()
         setupFab()
         setListAdapter()
     }
@@ -50,13 +59,16 @@ class LoansFragment : Fragment() {
     }
 
     private fun setListAdapter(){
-        loansAdapter = LoansAdapter()
-        viewDataBinding.loanList.itemAnimator = DefaultItemAnimator()
-        viewDataBinding.loanList.adapter = loansAdapter
-        viewModel.loanItems.observe(viewLifecycleOwner, Observer {
-            it.let {
-                loansAdapter.submitList(it)
-            }
-        })
+        val loansViewModel = viewDataBinding.viewmodel
+        if (loansViewModel != null){
+            loansAdapter = LoansAdapter(loansViewModel)
+            viewDataBinding.loanList.itemAnimator = DefaultItemAnimator()
+            viewDataBinding.loanList.adapter = loansAdapter
+        }
+     }
+
+    private fun setupSnackbar() {
+        view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
     }
+
 }

@@ -21,6 +21,8 @@
         tools:layout="@layout/create_new_loans_fragment" >
         <action
             android:id="@+id/action_createLoansFragment_to_loansFragment"
-            app:destination="@id/loansFragment" />
+            app:destination="@id/loansFragment"
+            app:popUpTo="@+id/loansFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
