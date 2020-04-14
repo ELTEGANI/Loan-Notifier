@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="viewmodel"
             type="com.development.loansnotifier.loans.LoansViewModel" />
 
     </data>
@@ -15,6 +15,17 @@
         android:layout_height="match_parent"
         tools:context=".loans.LoansFragment">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/loan_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/loan_items_layout" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_fab"
@@ -27,6 +38,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

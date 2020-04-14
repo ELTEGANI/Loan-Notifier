@@ -1,6 +1,7 @@
 package com.development.loansnotifier.data
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.development.loansnotifier.data.local.LoansDatabase
 import com.development.loansnotifier.data.local.LoansLocalDataSource
@@ -43,5 +44,10 @@ class DefaultLoansRepository private constructor(application: Application) {
             }
         }
     }
+
+    fun getLoans(): LiveData<List<Loans>> {
+        return loansDataSource.getLoans()
+    }
+
 
 }
