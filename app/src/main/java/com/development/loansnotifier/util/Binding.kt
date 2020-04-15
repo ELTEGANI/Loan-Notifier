@@ -1,5 +1,6 @@
 package com.development.loansnotifier.util
 
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.development.loansnotifier.data.Loans
@@ -19,3 +20,4 @@ fun TextView.setLoanDescription(loans: Loans){
         text = loans.loanDescription
     }
 }
+

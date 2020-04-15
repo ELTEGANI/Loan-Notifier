@@ -49,5 +49,16 @@ class DefaultLoansRepository private constructor(application: Application) {
         return loansDataSource.getLoans()
     }
 
+    suspend fun paymentLoan(loan: Loans) {
+        coroutineScope {
+            launch { loansDataSource.paymentLoan(loan) }
+        }
+    }
+
+    suspend fun activateLoan(loan: Loans){
+        coroutineScope {
+            launch { loansDataSource.activateLoan(loan) }
+        }
+    }
 
 }

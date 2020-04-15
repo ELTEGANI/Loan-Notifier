@@ -9,7 +9,7 @@ import com.development.loansnotifier.data.Loans
 import com.development.loansnotifier.databinding.LoanItemsLayoutBinding
 
 
-class LoansAdapter : ListAdapter<Loans,LoansAdapter.ViewHolder>(
+class LoansAdapter(private val loansViewModel: LoansViewModel) : ListAdapter<Loans,LoansAdapter.ViewHolder>(
     LoansDiffCallback()
 ){
 
@@ -20,12 +20,13 @@ class LoansAdapter : ListAdapter<Loans,LoansAdapter.ViewHolder>(
 
 
     override fun onBindViewHolder(holder: ViewHolder, position:Int){
-        holder.bind(getItem(position)!!)
+        holder.bind(loansViewModel,getItem(position)!!)
     }
 
 
     class ViewHolder private constructor(val binding: LoanItemsLayoutBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(loans: Loans) {
+        fun bind(loansViewModel: LoansViewModel,loans: Loans) {
+            binding.viewmodel = loansViewModel
             binding.loanItems = loans
             binding.executePendingBindings()
         }
