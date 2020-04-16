@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.development.loansnotifier.data.local.LoansDatabase
 import com.development.loansnotifier.data.local.LoansLocalDataSource
+import com.development.loansnotifier.util.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -45,7 +46,7 @@ class DefaultLoansRepository private constructor(application: Application) {
         }
     }
 
-    fun getLoans(): LiveData<List<Loans>> {
+    fun getLoans(): LiveData<Result<List<Loans>>> {
         return loansDataSource.getLoans()
     }
 
