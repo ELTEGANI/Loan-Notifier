@@ -45,6 +45,12 @@ android {
         targetCompatibility = 1.8
     }
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         kotlinOptions {
             jvmTarget = "1.8"
@@ -82,11 +88,15 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junit"
+    testImplementation "androidx.test:core-ktx:$coretest"
+    testImplementation "org.robolectric:robolectric:$robolectric"
+    testImplementation "androidx.test.ext:junit:$extjunit"
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.ext:junit:$extjunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressocore"
+    //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$fragmentktx"
     implementation "androidx.navigation:navigation-ui-ktx:$uiktx"
 

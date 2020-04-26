@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
+import com.development.loansnotifier.EventObserver
 import com.development.loansnotifier.R
 import com.development.loansnotifier.databinding.LoansFragmentBinding
 import com.development.loansnotifier.util.setupSnackbar
@@ -65,10 +66,17 @@ class LoansFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         setupSnackbar()
+        setupNavigation()
         setupFab()
         setListAdapter()
     }
 
+
+    private fun setupNavigation() {
+        viewModel.newLoanEvent.observe(viewLifecycleOwner, EventObserver {
+            navigateToCreateNewLoans()
+        })
+    }
 
     private fun setupFab(){
         activity?.findViewById<FloatingActionButton>(R.id.add_fab)?.let {

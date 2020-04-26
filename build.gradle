@@ -33,12 +33,12 @@ ext {
     // Sdk and tools
     // Support library and architecture components support minSdk 14 and above.
     minSdkVersion = 21
-    targetSdkVersion = 29
-    compileSdkVersion = 29
+    targetSdkVersion = 28
+    compileSdkVersion = 28
     // App dependencies
     cardVersion = '1.0.0'
     coroutinesVersion = '1.2.1'
-    materialVersion = '1.2.0-alpha05'
+    materialVersion = '1.2.0-alpha06'
     recyclerViewVersion = '1.1.0'
     roomVersion = '2.2.5'
     lifecycle_version = '2.2.0'
@@ -48,8 +48,10 @@ ext {
     junit = '4.13'
     espressocore = '3.2.0'
     extjunit = '1.1.1'
-    fragmentktx = '2.2.1'
-    uiktx = '2.2.1'
+    fragmentktx = '2.2.2'
+    uiktx = '2.2.2'
+    coretest = '1.2.0-beta01'
+    robolectric = '4.3.1'
 
 }
 
