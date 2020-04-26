@@ -43,6 +43,10 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
     private val _loansAddViewVisible = MutableLiveData<Boolean>()
     val loansAddViewVisible: LiveData<Boolean> = _loansAddViewVisible
 
+    private val _newLoanEvent = MutableLiveData<Event<Unit>>()
+    val newLoanEvent: LiveData<Event<Unit>> = _newLoanEvent
+
+
     val empty: LiveData<Boolean> = Transformations.map(loanItems) {
         it.isEmpty()
     }
@@ -135,5 +139,8 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
         return loansToShow
     }
 
+    fun addNewLoan() {
+        _newLoanEvent.value = Event(Unit)
+    }
 
 }
