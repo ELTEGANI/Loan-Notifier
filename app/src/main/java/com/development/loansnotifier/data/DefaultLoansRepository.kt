@@ -12,11 +12,9 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 
-class DefaultLoansRepository private constructor(application: Application) {
-
-    private val loansDataSource: LoansDataSource
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-
+class DefaultLoansRepository constructor(private val loansDataSource: LoansDataSource,
+                                                    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+) {
 
     companion object {
         @Volatile
@@ -24,19 +22,16 @@ class DefaultLoansRepository private constructor(application: Application) {
 
         fun getRepository(app: Application): DefaultLoansRepository {
             return INSTANCE ?: synchronized(this) {
-                DefaultLoansRepository(app).also {
+            val database = Room.databaseBuilder(app,
+            LoansDatabase::class.java, "Loans.db")
+            .build()
+            DefaultLoansRepository(LoansLocalDataSource(database.loanDao())).also {
                     INSTANCE = it
                 }
             }
         }
     }
 
-    init {
-        val database = Room.databaseBuilder(application.applicationContext,
-            LoansDatabase::class.java, "Loans.db")
-            .build()
-        loansDataSource  = LoansLocalDataSource(database.loanDao())
-    }
 
     suspend fun saveLoan(loan: Loans) {
         coroutineScope {
