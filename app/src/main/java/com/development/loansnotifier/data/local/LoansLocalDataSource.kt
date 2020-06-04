@@ -15,8 +15,7 @@ class LoansLocalDataSource internal constructor(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : LoansDataSource {
 
-
-    override suspend fun saveLoans(loan: Loans) = withContext(ioDispatcher){
+    override suspend fun saveLoans(loan: Loans) = withContext(ioDispatcher) {
         loansDao.insertLoan(loan)
     }
 
@@ -26,13 +25,11 @@ class LoansLocalDataSource internal constructor(
         }
     }
 
-    override suspend fun paymentLoan(loan: Loans) = withContext(ioDispatcher){
-       loansDao.updateLoanPayment(loan.id,true)
+    override suspend fun paymentLoan(loan: Loans) = withContext(ioDispatcher) {
+       loansDao.updateLoanPayment(loan.id, true)
     }
 
-    override suspend fun activateLoan(loan: Loans)  = withContext(ioDispatcher){
-        loansDao.updateLoanPayment(loan.id,false)
+    override suspend fun activateLoan(loan: Loans) = withContext(ioDispatcher) {
+        loansDao.updateLoanPayment(loan.id, false)
     }
-
-
 }

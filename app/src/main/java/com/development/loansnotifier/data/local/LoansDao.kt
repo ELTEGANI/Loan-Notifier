@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.development.loansnotifier.data.Loans
 
-
 @Dao
 interface LoansDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,5 +17,4 @@ interface LoansDao {
 
     @Query("UPDATE Loans SET  paid = :payed WHERE loan_id = :loanId")
     suspend fun updateLoanPayment(loanId: String, payed: Boolean)
-
 }

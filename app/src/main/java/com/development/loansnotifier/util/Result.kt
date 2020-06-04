@@ -2,7 +2,6 @@ package com.development.loansnotifier.util
 
 import com.development.loansnotifier.util.Result.Success
 
-
 /**
  * A generic class that holds a value with its loading status.
  * @param <T>

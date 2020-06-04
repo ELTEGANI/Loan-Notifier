@@ -8,24 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.development.loansnotifier.data.Loans
 import com.development.loansnotifier.databinding.LoanItemsLayoutBinding
 
-
-class LoansAdapter(private val loansViewModel: LoansViewModel) : ListAdapter<Loans,LoansAdapter.ViewHolder>(
+class LoansAdapter(private val loansViewModel: LoansViewModel) : ListAdapter<Loans, LoansAdapter.ViewHolder>(
     LoansDiffCallback()
-){
+) {
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType:Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
-
-    override fun onBindViewHolder(holder: ViewHolder, position:Int){
-        holder.bind(loansViewModel,getItem(position)!!)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(loansViewModel, getItem(position)!!)
     }
 
-
-    class ViewHolder private constructor(val binding: LoanItemsLayoutBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(loansViewModel: LoansViewModel,loans: Loans) {
+    class ViewHolder private constructor(val binding: LoanItemsLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(loansViewModel: LoansViewModel, loans: Loans) {
             binding.viewmodel = loansViewModel
             binding.loanItems = loans
             binding.executePendingBindings()
@@ -40,7 +36,7 @@ class LoansAdapter(private val loansViewModel: LoansViewModel) : ListAdapter<Loa
     }
 }
 
-class LoansDiffCallback: DiffUtil.ItemCallback<Loans>(){
+class LoansDiffCallback : DiffUtil.ItemCallback<Loans>() {
     override fun areItemsTheSame(oldItem: Loans, newItem: Loans): Boolean {
         return oldItem.id == newItem.id
     }

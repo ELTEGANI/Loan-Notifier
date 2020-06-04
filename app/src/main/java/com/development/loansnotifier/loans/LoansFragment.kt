@@ -5,7 +5,6 @@ import android.view.*
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.development.loansnotifier.EventObserver
@@ -17,12 +16,11 @@ import com.google.android.material.snackbar.Snackbar
 
 class LoansFragment : Fragment() {
 
-
     private val viewModel by viewModels<LoansViewModel>()
     private lateinit var viewDataBinding: LoansFragmentBinding
     private lateinit var loansAdapter: LoansAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.loans_fragment, container, false)
         viewDataBinding = LoansFragmentBinding.bind(root).apply {
             this.viewmodel = viewModel
@@ -45,10 +43,10 @@ class LoansFragment : Fragment() {
         PopupMenu(requireContext(), view).run {
             menuInflater.inflate(R.menu.filter_loan_menu, menu)
             setOnMenuItemClickListener {
-                viewModel.setFiltering (
+                viewModel.setFiltering(
                     when (it.itemId) {
                         R.id.paid -> LoanFilterType.PAID_LOANS
-                        R.id.unpaid-> LoanFilterType.NUPAID_LOANS
+                        R.id.unpaid -> LoanFilterType.NUPAID_LOANS
                         else -> LoanFilterType.ALL_LOANS
                     }
                 )
@@ -59,7 +57,7 @@ class LoansFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.loan_menu,menu)
+        inflater.inflate(R.menu.loan_menu, menu)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -71,14 +69,13 @@ class LoansFragment : Fragment() {
         setListAdapter()
     }
 
-
     private fun setupNavigation() {
         viewModel.newLoanEvent.observe(viewLifecycleOwner, EventObserver {
             navigateToCreateNewLoans()
         })
     }
 
-    private fun setupFab(){
+    private fun setupFab() {
         activity?.findViewById<FloatingActionButton>(R.id.add_fab)?.let {
             it.setOnClickListener {
                 navigateToCreateNewLoans()
@@ -86,7 +83,7 @@ class LoansFragment : Fragment() {
         }
     }
 
-    private fun navigateToCreateNewLoans(){
+    private fun navigateToCreateNewLoans() {
        val actions = LoansFragmentDirections.actionLoansFragmentToCreateLoansFragment()
        findNavController().navigate(actions)
     }
@@ -103,5 +100,4 @@ class LoansFragment : Fragment() {
     private fun setupSnackbar() {
         view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
     }
-
 }
