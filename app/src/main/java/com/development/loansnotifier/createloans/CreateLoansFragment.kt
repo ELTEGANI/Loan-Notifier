@@ -19,8 +19,7 @@ import java.util.*
 
 class CreateLoansFragment : Fragment() {
 
-
-    private lateinit var createLoansFragmentBinding:CreateNewLoansFragmentBinding
+    private lateinit var createLoansFragmentBinding: CreateNewLoansFragmentBinding
     private val viewModel by viewModels<CreateLoansViewModel>()
 
     @SuppressLint("SimpleDateFormat")
@@ -42,7 +41,7 @@ class CreateLoansFragment : Fragment() {
                     val format = SimpleDateFormat("yyyy-MM-dd")
                     val date = format.format(c.time)
                     viewModel.loanDate.value = date
-                },year,month,day)
+                }, year, month, day)
             }
             datePickerDialog?.show()
         }
@@ -60,7 +59,7 @@ class CreateLoansFragment : Fragment() {
                     val format = SimpleDateFormat("yyyy-MM-dd")
                     val date = format.format(c.time)
                     viewModel.paymentDate.value = date
-                },year,month,day)
+                }, year, month, day)
             }
             datePickerDialog?.show()
         }

@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer
 import com.development.loansnotifier.Event
 import com.google.android.material.snackbar.Snackbar
 
-
 /**
  * Transforms static java function Snackbar.make() to an extension function on View.
  */

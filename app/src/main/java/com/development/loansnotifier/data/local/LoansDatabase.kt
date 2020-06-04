@@ -4,7 +4,6 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.development.loansnotifier.data.Loans
 
-
 /**
  * The Room Database that contains the Task table.
  *

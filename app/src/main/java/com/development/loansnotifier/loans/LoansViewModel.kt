@@ -14,13 +14,12 @@ import com.development.loansnotifier.util.Result
 import com.development.loansnotifier.util.Result.Success
 import kotlinx.coroutines.launch
 
-
 class LoansViewModel(application: Application) : AndroidViewModel(application) {
     private val loansRepository = DefaultLoansRepository.getRepository(application)
 
     private val _forceUpdate = MutableLiveData<Boolean>(false)
 
-    val loanItems: LiveData<List<Loans>>  = _forceUpdate.switchMap {
+    val loanItems: LiveData<List<Loans>> = _forceUpdate.switchMap {
         loansRepository.getLoans().switchMap { filterLoans(it) }
     }
 
@@ -29,7 +28,6 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
     val snackbarText: LiveData<Event<Int>> = _snackbarText
 
     private var currentFiltering = ALL_LOANS
-
 
     private val _currentFilteringLabel = MutableLiveData<Int>()
     val currentFilteringLabel: LiveData<Int> = _currentFilteringLabel
@@ -45,7 +43,6 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _newLoanEvent = MutableLiveData<Event<Unit>>()
     val newLoanEvent: LiveData<Event<Unit>> = _newLoanEvent
-
 
     val empty: LiveData<Boolean> = Transformations.map(loanItems) {
         it.isEmpty()
@@ -65,19 +62,19 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
         when (requestType) {
             ALL_LOANS -> {
                 setFilter(
-                    R.string.all_loan,R.string.no_loans,
+                    R.string.all_loan, R.string.no_loans,
                     R.drawable.logo_no_fill, false
                 )
             }
             PAID_LOANS -> {
                 setFilter(
-                    R.string.label_paid,R.string.no_payed_loan,
+                    R.string.label_paid, R.string.no_payed_loan,
                     R.drawable.ic_check_circle_96dp, false
                 )
             }
             NUPAID_LOANS -> {
                 setFilter(
-                    R.string.label_unpaid,R.string.no_unpaid_loan,
+                    R.string.label_unpaid, R.string.no_unpaid_loan,
                     R.drawable.ic_verified_user_96dp, false
                 )
             }
@@ -86,8 +83,10 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun setFilter(
-        @StringRes filteringLabelString: Int, @StringRes noLoansLabelString: Int,
-        @DrawableRes noLoanIconDrawable: Int, loansAddVisible: Boolean
+        @StringRes filteringLabelString: Int,
+        @StringRes noLoansLabelString: Int,
+        @DrawableRes noLoanIconDrawable: Int,
+        loansAddVisible: Boolean
     ) {
         _currentFilteringLabel.value = filteringLabelString
         _noLoansLabel.value = noLoansLabelString
@@ -109,7 +108,6 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
         _snackbarText.value = Event(message)
     }
 
-
     private fun filterLoans(loansResult: Result<List<Loans>>): LiveData<List<Loans>> {
         val result = MutableLiveData<List<Loans>>()
         if (loansResult is Success) {
@@ -119,19 +117,19 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
         } else {
             result.value = emptyList()
         }
-        Log.d("result",result.toString())
+        Log.d("result", result.toString())
         return result
     }
 
-    private fun filterItems(loans: List<Loans>,loanFilterType: LoanFilterType): List<Loans> {
+    private fun filterItems(loans: List<Loans>, loanFilterType: LoanFilterType): List<Loans> {
         val loansToShow = ArrayList<Loans>()
         for (loan in loans) {
             when (loanFilterType) {
                 ALL_LOANS -> loansToShow.add(loan)
-                PAID_LOANS -> if (loan.isPaid){
+                PAID_LOANS -> if (loan.isPaid) {
                     loansToShow.add(loan)
                 }
-                NUPAID_LOANS ->if (loan.isNotPaid){
+                NUPAID_LOANS -> if (loan.isNotPaid) {
                     loansToShow.add(loan)
                 }
             }
@@ -142,5 +140,4 @@ class LoansViewModel(application: Application) : AndroidViewModel(application) {
     fun addNewLoan() {
         _newLoanEvent.value = Event(Unit)
     }
-
 }

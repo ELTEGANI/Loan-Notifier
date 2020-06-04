@@ -11,9 +11,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
-
-class DefaultLoansRepository constructor(private val loansDataSource: LoansDataSource,
-                                                    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+class DefaultLoansRepository constructor(
+    private val loansDataSource: LoansDataSource,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
     companion object {
@@ -31,7 +31,6 @@ class DefaultLoansRepository constructor(private val loansDataSource: LoansDataS
             }
         }
     }
-
 
     suspend fun saveLoan(loan: Loans) {
         coroutineScope {
@@ -51,10 +50,9 @@ class DefaultLoansRepository constructor(private val loansDataSource: LoansDataS
         }
     }
 
-    suspend fun activateLoan(loan: Loans){
+    suspend fun activateLoan(loan: Loans) {
         coroutineScope {
             launch { loansDataSource.activateLoan(loan) }
         }
     }
-
 }
