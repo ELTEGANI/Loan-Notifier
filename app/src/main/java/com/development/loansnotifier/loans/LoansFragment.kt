@@ -84,8 +84,8 @@ class LoansFragment : Fragment() {
     }
 
     private fun navigateToCreateNewLoans() {
-       val actions = LoansFragmentDirections.actionLoansFragmentToCreateLoansFragment()
-       findNavController().navigate(actions)
+           val actions = LoansFragmentDirections.actionLoansFragmentToCreateLoansFragment()
+           findNavController().navigate(actions)
     }
 
     private fun setListAdapter() {
