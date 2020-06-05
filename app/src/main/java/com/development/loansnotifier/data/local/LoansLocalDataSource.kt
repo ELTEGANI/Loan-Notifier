@@ -26,7 +26,7 @@ class LoansLocalDataSource internal constructor(
     }
 
     override suspend fun paymentLoan(loan: Loans) = withContext(ioDispatcher) {
-       loansDao.updateLoanPayment(loan.id, true)
+        loansDao.updateLoanPayment(loan.id, true)
     }
 
     override suspend fun activateLoan(loan: Loans) = withContext(ioDispatcher) {
