@@ -45,17 +45,17 @@ class CreateLoansViewModel(application: Application) : AndroidViewModel(applicat
               R.id.debitor_radio_button -> {
                 status = "Debtor"
               }
-            }
+                   }
      if (loanAmount == null || loanDescription == null || loanDate == null || loanPayment == null) {
-       _snackbarText.value = Event(R.string.loan_cant_be_empty)
-       return
+         _snackbarText.value = Event(R.string.loan_cant_be_empty)
+         return
      } else if (Loans(loanAmount, loanDescription, loanPayment, loanDate, status).isEmpty) {
-          _snackbarText.value = Event(R.string.loan_cant_be_empty)
-          return
+            _snackbarText.value = Event(R.string.loan_cant_be_empty)
+            return
      } else {
          createLoan(Loans(loanAmount, loanDescription, loanPayment, loanDate, status))
      }
-      }
+        }
 
     private fun createLoan(loan: Loans) = viewModelScope.launch {
         loansRepository.saveLoan(loan)
