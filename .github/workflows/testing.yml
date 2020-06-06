@@ -26,9 +26,4 @@ jobs:
       with:
         java-version: 1.8
 
-    - name: Run Kotlin ktlintCheck
-      run: ./gradlew ktlintCheck
-
-    - name: Run Android ktlintFormat
-      run: ./gradlew ktlintFormat
 
