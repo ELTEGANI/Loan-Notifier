@@ -24,8 +24,8 @@ jobs:
     - name: Looking for gradle check
       run: ./gradlew
 
-    - name: Run Kotlin Linter
-      run: ./gradlew ktlintStagingDebugCheck
+    - name: Run ktlintCheck
+      run: ./gradlew ktlintCheck
 
-    - name: Run Android Linter
-      run: ./gradlew lintStagingDebug
+    - name: Run ktlintFormat
+      run: ./gradlew ktlintFormat
