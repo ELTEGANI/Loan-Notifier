@@ -25,4 +25,7 @@ jobs:
       run: ./gradlew
 
     - name: Run ktlintCheck
-      run: ./gradlew ktlintStagingDebugCheck
+      run: ./gradlew ktlintCheck
+
+    - name: Run ktlintFormat
+      run: ./gradlew ktlintFormat
