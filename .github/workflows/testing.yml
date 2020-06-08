@@ -21,6 +21,9 @@ jobs:
       with:
         java-version: 1.8
 
+    - name: Looking for gradle check
+      run: ./gradlew
+
     - name: Run Kotlin Linter
       run: ./gradlew ktlintStagingDebugCheck
 
