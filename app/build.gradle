@@ -93,6 +93,7 @@ dependencies {
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.ext:junit:$extjunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressocore"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressocore"
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$fragmentktx"
     implementation "androidx.navigation:navigation-ui-ktx:$uiktx"
