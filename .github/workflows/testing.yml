@@ -29,9 +29,8 @@ jobs:
     - name: look for any ktlint tasks
       run: ./gradlew
 
-    - name: ktlint Check
-      run: ./gradlew ktlintCheck
+    - name: Run Kotlin Linter
+        run: ./gradlew ktlintStagingDebugCheck
 
-    - name: ktlint Format
-      run: ./gradlew ktlintFormat
-
+    - name: Run Android Linter
+        run: ./gradlew lintStagingDebug
