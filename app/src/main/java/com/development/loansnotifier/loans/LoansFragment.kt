@@ -1,7 +1,12 @@
 package com.development.loansnotifier.loans
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -84,8 +89,8 @@ class LoansFragment : Fragment() {
     }
 
     private fun navigateToCreateNewLoans() {
-           val actions = LoansFragmentDirections.actionLoansFragmentToCreateLoansFragment()
-           findNavController().navigate(actions)
+        val actions = LoansFragmentDirections.actionLoansFragmentToCreateLoansFragment()
+        findNavController().navigate(actions)
     }
 
     private fun setListAdapter() {

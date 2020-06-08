@@ -5,10 +5,10 @@ import androidx.lifecycle.map
 import com.development.loansnotifier.data.Loans
 import com.development.loansnotifier.data.LoansDataSource
 import com.development.loansnotifier.util.Result
+import com.development.loansnotifier.util.Result.Success
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import com.development.loansnotifier.util.Result.Success
 
 class LoansLocalDataSource internal constructor(
     private val loansDao: LoansDao,

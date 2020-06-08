@@ -3,10 +3,10 @@ package com.development.loansnotifier.createloans
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.development.loansnotifier.EventObserver
@@ -15,8 +15,7 @@ import com.development.loansnotifier.databinding.CreateNewLoansFragmentBinding
 import com.development.loansnotifier.util.setupSnackbar
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
-import java.util.*
-
+import java.util.Calendar
 class CreateLoansFragment : Fragment() {
 
     private lateinit var createLoansFragmentBinding: CreateNewLoansFragmentBinding

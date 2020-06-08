@@ -7,8 +7,6 @@ on:
   pull_request:
     branches:
        - master
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   Testing:
     runs-on: ubuntu-latest
@@ -23,8 +21,11 @@ jobs:
       with:
         java-version: 1.8
 
-    - name: Run Kotlin Linter
-       run: ./gradlew ktlintStagingDebugCheck
+    - name: Looking for gradle check
+      run: ./gradlew
 
-    - name: Run Android Linter
-      run: ./gradlew lintStagingDebug
+    - name: Run ktlintCheck
+      run: ./gradlew ktlintCheck
+
+    - name: Run ktlintFormat
+      run: ./gradlew ktlintFormat
