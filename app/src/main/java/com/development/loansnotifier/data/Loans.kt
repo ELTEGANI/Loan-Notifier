@@ -3,8 +3,7 @@ package com.development.loansnotifier.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
-
+import java.util.UUID
 @Entity(tableName = "Loans")
 data class Loans @JvmOverloads constructor (
     @ColumnInfo(name = "loan_amount") var loanAmount: String,
