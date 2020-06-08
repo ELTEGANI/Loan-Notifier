@@ -26,4 +26,12 @@ jobs:
       with:
         java-version: 1.8
 
+    - name: look for any ktlint tasks
+      run: ./gradlew
+
+    - name: ktlint Check
+      run: ./gradlew ktlintCheck
+
+    - name: ktlint Format
+      run: ./gradlew ktlintFormat
 
