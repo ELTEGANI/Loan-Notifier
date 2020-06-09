@@ -2,8 +2,10 @@ package com.development.loansnotifier.createloans
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -27,7 +29,8 @@ class CreateLoansFragment : Fragment() {
         createLoansFragmentBinding = CreateNewLoansFragmentBinding.bind(root).apply {
             this.viewmodel = viewModel
         }
-        createLoansFragmentBinding.loanDateButton.setOnClickListener {
+
+        createLoansFragmentBinding.loanDateEditText.setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
             val month = c.get(Calendar.MONTH)
@@ -45,7 +48,7 @@ class CreateLoansFragment : Fragment() {
             datePickerDialog?.show()
         }
 
-        createLoansFragmentBinding.paymentDateButton.setOnClickListener {
+        createLoansFragmentBinding.paymentDateEditText.setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
             val month = c.get(Calendar.MONTH)
@@ -82,5 +85,12 @@ class CreateLoansFragment : Fragment() {
             val action = CreateLoansFragmentDirections.actionCreateLoansFragmentToLoansFragment()
             findNavController().navigate(action)
         })
+    }
+
+    val MotionEvent.up get() = action == MotionEvent.ACTION_UP
+
+    fun MotionEvent.isIn(view: View): Boolean {
+        val rect = Rect(view.left, view.top, view.right, view.bottom)
+        return rect.contains((view.left + x).toInt(), (view.top + y).toInt())
     }
 }

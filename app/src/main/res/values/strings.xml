@@ -13,4 +13,11 @@
     <string name="no_payed_loan">You Have No Paid Loan</string>
     <string name="label_unpaid">UnPaid Loans</string>
     <string name="no_unpaid_loan">You Have No Unpaid Loan</string>
+    <string name="loan_amount">Loan amount</string>
+    <string name="loan_description">Loan description</string>
+    <string name="loan_date">Loan Date</string>
+    <string name="payment_date">Payment Date</string>
+    <string name="im_creditor">Im Creditor</string>
+    <string name="im_debtor">Im Debtor</string>
+    <string name="create_loan">Create Loan</string>
 </resources>
