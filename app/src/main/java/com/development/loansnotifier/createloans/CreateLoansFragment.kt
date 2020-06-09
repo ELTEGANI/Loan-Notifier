@@ -86,11 +86,4 @@ class CreateLoansFragment : Fragment() {
             findNavController().navigate(action)
         })
     }
-
-    val MotionEvent.up get() = action == MotionEvent.ACTION_UP
-
-    fun MotionEvent.isIn(view: View): Boolean {
-        val rect = Rect(view.left, view.top, view.right, view.bottom)
-        return rect.contains((view.left + x).toInt(), (view.top + y).toInt())
-    }
 }
