@@ -14,127 +14,141 @@
         android:layout_height="match_parent"
         tools:context=".createloans.CreateLoansFragment">
 
-        <EditText
-            android:id="@+id/editText"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loan_amount_editText"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="112dp"
+            android:layout_marginTop="69dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="31dp"
-            android:ems="10"
-            android:hint="Loan amount"
-            android:text="@={viewmodel.amount}"
-            android:inputType="number"
-            app:layout_constraintBottom_toTopOf="@+id/editText2"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/loan_description_editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editText2"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/loan_amount"
+                android:inputType="number"
+                android:text="@={viewmodel.amount}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loan_description_editText"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="37dp"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Loan description"
-            android:text="@={viewmodel.description}"
-            app:layout_constraintBottom_toTopOf="@+id/editText3"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/loan_date_input_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loan_amount_editText">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/loan_description"
+                android:inputType="text"
+                android:text="@={viewmodel.description}">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editText3"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loan_date_input_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="417dp"
-            android:ems="10"
-            android:inputType="date"
-            android:enabled="false"
-            android:hint="Loan Date"
-            android:text="@={viewmodel.loanDate}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/payment_date_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loan_description_editText">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loan_date_editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="date"
+                android:hint="@string/loan_date"
+                android:text="@={viewmodel.loanDate}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/loan_date_button"
-            android:layout_width="wrap_content"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/payment_date_input_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loan_date_input_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/payment_date_editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/payment_date"
+                android:inputType="date"
+                android:text="@={viewmodel.paymentDate}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/create_loan_button"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{()-> viewmodel.saveLoan()}"
+            android:text="@string/create_loan"
             android:textAllCaps="false"
-            android:text="Loan Date"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-        <Button
-            android:id="@+id/payment_date_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="Payment Date"
-            android:textAllCaps="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loan_date_button" />
-
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:inputType="date"
-            android:enabled="false"
-            android:hint="Payment Date"
-            android:text="@={viewmodel.paymentDate}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="430dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:checkedButton="@={viewmodel.loanStatus}"
+            app:layout_constraintBottom_toTopOf="@+id/create_loan_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/payment_date_input_layout">
 
-            <RadioButton
-                android:id="@+id/creditor_radio_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Im Creditor" />
-
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/debitor_radio_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Im Debtor" />
+                android:text="@string/im_debtor" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/creditor_radio_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/im_creditor" />
         </RadioGroup>
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
-            android:text="Create Loan"
-            android:textAllCaps="false"
-            android:onClick="@{()-> viewmodel.saveLoan()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

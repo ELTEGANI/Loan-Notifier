@@ -21,7 +21,7 @@ class LoansLocalDataSource internal constructor(
 
     override fun getLoans(): LiveData<Result<List<Loans>>> {
         return loansDao.getLoans().map {
-            Success(it)
+            Success(it.sortedBy { it.loanDate })
         }
     }
 
