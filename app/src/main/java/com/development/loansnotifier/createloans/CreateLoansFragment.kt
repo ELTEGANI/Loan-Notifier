@@ -2,10 +2,8 @@ package com.development.loansnotifier.createloans
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
